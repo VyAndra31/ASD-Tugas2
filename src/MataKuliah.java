@@ -26,9 +26,7 @@ public class MataKuliah {
         }
 
         String jenis = jenisSemester.trim();
-        boolean jenisValid = jenis.equalsIgnoreCase("Ganjil")
-                || jenis.equalsIgnoreCase("Genap")
-                || jenis.equalsIgnoreCase("Keduanya");
+        boolean jenisValid = jenis.equalsIgnoreCase("Ganjil") || jenis.equalsIgnoreCase("Genap");
 
         if(!jenisValid){
             throw new IllegalArgumentException("Jenis semester harus Ganjil, Genap, atau Keduanya: " + jenis);
