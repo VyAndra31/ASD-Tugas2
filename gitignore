@@ -1,0 +1,26 @@
+# Hasil kompilasi Java
+*.class
+out/
+build/
+target/
+
+# Konfigurasi lokal IntelliJ IDEA
+.idea/
+*.iml
+
+# Konfigurasi editor lain
+.vscode/
+
+# Berkas sementara dan log
+*.log
+*.tmp
+*.bak
+*~
+
+# Berkas khusus sistem operasi
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Catatan: folder data/ dan laporan sengaja TIDAK diabaikan,
+# karena diperlukan untuk menjalankan dan mengumpulkan proyek.
