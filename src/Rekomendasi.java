@@ -32,7 +32,7 @@ public class Rekomendasi {
         NodePrasyarat temp = mk.prasyarat;
 
         while (temp != null) {
-            if (!daftarLulus.sudahLulus(temp.kode)) {
+            if (!daftarLulus.sudahLulus(temp.mataKuliah.kode)) {
                 return false;
             }
 
@@ -77,12 +77,12 @@ public class Rekomendasi {
         NodePrasyarat temp = mk.prasyarat;
 
         while (temp != null) {
-            if (!daftarLulus.sudahLulus(temp.kode)) {
+            if (!daftarLulus.sudahLulus(temp.mataKuliah.kode)) {
                 if (!belumLulus.equals("")) {
                     belumLulus = belumLulus + ", ";
                 }
 
-                belumLulus = belumLulus + temp.kode;
+                belumLulus = belumLulus + temp.mataKuliah.kode;
             }
 
             temp = temp.next;
@@ -124,8 +124,7 @@ public class Rekomendasi {
         MataKuliah temp = graph.head;
 
         while (temp != null) {
-            if (temp.ganjilGenap.equalsIgnoreCase(semester) && !daftarLulus.sudahLulus(temp.kode)) {
-
+            if (temp.jenisSemester.equalsIgnoreCase(semester) && !daftarLulus.sudahLulus(temp.kode)) {
                 String alasan = alasanTidakBisa(temp, totalSKS);
 
                 if (alasan.equals("")) {
