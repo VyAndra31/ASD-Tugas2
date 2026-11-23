@@ -93,14 +93,10 @@ public class Rekomendasi {
         String alasan = "";
         String belumLulus = "";
 
-        NodePrasyarat temp = mk.prasyarat;
+        DaftarLulus dikunjungi = new DaftarLulus();
+        dikunjungi.tambahLulus(mk.kode);
 
-        while (temp != null) {
-            DaftarLulus dikunjungi = new DaftarLulus();
-            dikunjungi.tambahLulus(mk.kode);
-
-            belumLulus = cariPrasyaratBelumLulus(mk, dikunjungi, "");
-        }
+        belumLulus = cariPrasyaratBelumLulus(mk, dikunjungi, "");
 
         if (!belumLulus.equals("")) {
             alasan = "belum lulus " + belumLulus;
