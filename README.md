@@ -86,22 +86,3 @@ java -cp out Main
 
 Pemeriksaan khusus yang digunakan dalam kode: Capstone (`CAP`) membutuhkan minimal 60 SKS, Praktik Kerja Lapangan (`PKL`) minimal 100 SKS, dan Skripsi (`SKR`) diperiksa berdasarkan kelulusan seluruh mata kuliah wajib lainnya.
 
-## Format Output
-
-```text
-1. mahasiswa satu
-
-Daftar MK yang bisa diambil:
- 1. KODE  Nama Mata Kuliah                               3 SKS
-
-Daftar MK yang belum bisa diambil semester depan:
-KODE: belum lulus MK1, MK2
-
-2. mahasiswa dua
-...
-
-3. mahasiswa tiga
-...
-```
-
-Isi hasil rekomendasi mengikuti masing-masing berkas mahasiswa dan hubungan prasyarat pada CSV.
