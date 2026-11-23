@@ -124,8 +124,7 @@ public class Rekomendasi {
         MataKuliah temp = graph.head;
 
         while (temp != null) {
-            if (temp.jenisSemester.equalsIgnoreCase(semester) && !daftarLulus.sudahLulus(temp.kode)) {
-                String alasan = alasanTidakBisa(temp, totalSKS);
+            if ((temp.jenisSemester.equalsIgnoreCase(semester) || temp.jenisSemester.equalsIgnoreCase("Keduanya")) && !daftarLulus.sudahLulus(temp.kode)) {                String alasan = alasanTidakBisa(temp, totalSKS);
 
                 if (alasan.equals("")) {
                     System.out.println(nomor + ". " + temp.kode + " " + temp.nama + " " + temp.sks + " SKS");
@@ -142,8 +141,7 @@ public class Rekomendasi {
         temp = graph.head;
 
         while (temp != null) {
-            if (temp.jenisSemester.equalsIgnoreCase(semester) && !daftarLulus.sudahLulus(temp.kode)) {
-                String alasan = alasanTidakBisa(temp, totalSKS);
+            if ((temp.jenisSemester.equalsIgnoreCase(semester) || temp.jenisSemester.equalsIgnoreCase("Keduanya")) && !daftarLulus.sudahLulus(temp.kode)) {                String alasan = alasanTidakBisa(temp, totalSKS);
 
                 if (!alasan.equals("")) {
                     System.out.println(temp.kode + ": " + alasan);
