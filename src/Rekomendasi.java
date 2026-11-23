@@ -28,18 +28,37 @@ public class Rekomendasi {
         return totalSKS;
     }
 
-    public boolean cekPrasyarat(MataKuliah mk) {
+    private String cariPrasyaratBelumLulus(MataKuliah mk, DaftarLulus dikunjungi, String hasil) {
         NodePrasyarat temp = mk.prasyarat;
 
         while (temp != null) {
-            if (!daftarLulus.sudahLulus(temp.mataKuliah.kode)) {
-                return false;
+            MataKuliah syarat = temp.mataKuliah;
+
+            if (!dikunjungi.sudahLulus(syarat.kode)) {
+                dikunjungi.tambahLulus(syarat.kode);
+
+                hasil = cariPrasyaratBelumLulus(syarat, dikunjungi, hasil);
+
+                if (!daftarLulus.sudahLulus(syarat.kode)) {
+                    if (!hasil.equals("")) {
+                        hasil = hasil + ", ";
+                    }
+
+                    hasil = hasil + syarat.kode;
+                }
             }
 
             temp = temp.next;
         }
 
-        return true;
+        return hasil;
+    }
+
+    public boolean cekPrasyarat(MataKuliah mk) {
+        DaftarLulus dikunjungi = new DaftarLulus();
+        dikunjungi.tambahLulus(mk.kode);
+
+        return cariPrasyaratBelumLulus(mk, dikunjungi, "").equals("");
     }
 
     public boolean cekMinimalSKS(String kode, int totalSKS) {
@@ -77,15 +96,10 @@ public class Rekomendasi {
         NodePrasyarat temp = mk.prasyarat;
 
         while (temp != null) {
-            if (!daftarLulus.sudahLulus(temp.mataKuliah.kode)) {
-                if (!belumLulus.equals("")) {
-                    belumLulus = belumLulus + ", ";
-                }
+            DaftarLulus dikunjungi = new DaftarLulus();
+            dikunjungi.tambahLulus(mk.kode);
 
-                belumLulus = belumLulus + temp.mataKuliah.kode;
-            }
-
-            temp = temp.next;
+            belumLulus = cariPrasyaratBelumLulus(mk, dikunjungi, "");
         }
 
         if (!belumLulus.equals("")) {
@@ -128,7 +142,7 @@ public class Rekomendasi {
                 String alasan = alasanTidakBisa(temp, totalSKS);
 
                 if (alasan.equals("")) {
-                    System.out.println(nomor + ". " + temp.kode + " " + temp.nama + " " + temp.sks + " SKS");
+                    System.out.printf("%2d. %-5s %-45s %d SKS%n", nomor, temp.kode, temp.nama, temp.sks);
                     nomor++;
                 }
             }
