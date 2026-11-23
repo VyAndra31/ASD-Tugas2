@@ -100,7 +100,7 @@ public class PembacaFile {
 
                 if (key.equals("semester_berikutnya")) {
                     if (val.equalsIgnoreCase("ganjil")) semBerikutnya = "Ganjil";
-                    else if (val.equalsIgnoreCase("gaenap")) semBerikutnya = "Genap";
+                    else if (val.equalsIgnoreCase("genap")) semBerikutnya = "Genap";
                     else System.out.println("Semester tidak valid di baris " + idxBaris + ": " + val);
                 } else if (key.equals("lulus") && !val.isEmpty()) {
                     String[] listKode = val.split(",", -1);
