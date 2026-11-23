@@ -142,8 +142,7 @@ public class Rekomendasi {
         temp = graph.head;
 
         while (temp != null) {
-            if (temp.ganjilGenap.equalsIgnoreCase(semester) && !daftarLulus.sudahLulus(temp.kode)) {
-
+            if (temp.jenisSemester.equalsIgnoreCase(semester) && !daftarLulus.sudahLulus(temp.kode)) {
                 String alasan = alasanTidakBisa(temp, totalSKS);
 
                 if (!alasan.equals("")) {
